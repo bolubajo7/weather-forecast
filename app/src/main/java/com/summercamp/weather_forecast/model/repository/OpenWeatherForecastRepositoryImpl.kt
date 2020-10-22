@@ -1,12 +1,14 @@
 package com.summercamp.weather_forecast.model.repository
 
+import com.summercamp.weather_forecast.model.api.WeatherForecastAPI
 import com.summercamp.weather_forecast.model.local.LocalWeatherForecast
+import com.summercamp.weather_forecast.model.mapper.OpenWeatherForecastResponseMapper
 
-class OpenWeatherForecastRepositoryImpl : OpenWeatherForecastRepository {
-    override fun getWeatherForecast(cityName: String): LocalWeatherForecast {
-        // 1. Get the data from API
-        // 2. Pass the API response through the mapper
-        // 3. Return the result of the mapper
-        TODO("Not yet implemented")
+class OpenWeatherForecastRepositoryImpl(
+    private val weatherForecastAPI: WeatherForecastAPI,
+    private val mapper: OpenWeatherForecastResponseMapper) : OpenWeatherForecastRepository {
+    override suspend fun getWeatherForecast(cityName: String): LocalWeatherForecast {
+        val networkResponse = weatherForecastAPI.getWeatherForecast(cityName, "db5bc35256f8278a29226e235f95294b", "metric")
+        return mapper.map(networkResponse)
     }
 }

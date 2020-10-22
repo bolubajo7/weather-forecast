@@ -1,7 +1,15 @@
 package com.summercamp.weather_forecast.model.api
 
 import com.summercamp.weather_forecast.model.network.FiveDayForecast
+import retrofit2.http.GET
+import retrofit2.http.Query
 
 interface WeatherForecastAPI {
-    fun getWeatherForecast(cityName: String) : FiveDayForecast
+    @GET("/data/2.5/forecast?")
+     fun getWeatherForecast(
+        @Query("q")city : String,
+        @Query("appid") appId: String,
+        @Query("units") units: String
+    ) : FiveDayForecast
+
 }

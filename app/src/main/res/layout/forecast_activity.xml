@@ -4,19 +4,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.MainActivity">
+    tools:context=".ui.ForecastActivity">
 
 
     <TextView
         android:id="@+id/forecastCityName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimens_medium"
         android:gravity="center"
         android:autofillHints="@string/city_name"
         android:ems="10"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="London"
+        android:layout_marginBottom="@dimen/dimens_medium"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/weatherForecastList"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/forecastCityName"
+        android:paddingBottom="@dimen/dimens_medium"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

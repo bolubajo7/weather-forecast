@@ -1,10 +1,10 @@
 package com.summercamp.weather_forecast.di
-
 import com.summercamp.weather_forecast.model.api.WeatherForecastAPI
 import com.summercamp.weather_forecast.model.mapper.OpenWeatherForecastResponseMapper
 import com.summercamp.weather_forecast.model.mapper.OpenWeatherForecastResponseMapperImpl
 import com.summercamp.weather_forecast.model.repository.OpenWeatherForecastRepository
 import com.summercamp.weather_forecast.model.repository.OpenWeatherForecastRepositoryImpl
+import com.summercamp.weather_forecast.viewmodel.WeatherForecastViewModelFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -29,6 +29,10 @@ object WeatherForecastModule {
         return OpenWeatherForecastRepositoryImpl(weatherForecastAPI, mapper)
 
     }
+
+    @Provides
+    fun provideWeatherForecastViewModelFactory(weatherForecastRepository: OpenWeatherForecastRepository) : WeatherForecastViewModelFactory
+            = WeatherForecastViewModelFactory(weatherForecastRepository)
 
     private fun getOpenWeatherForecastAPI(): WeatherForecastAPI {
         val logger = HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BODY }

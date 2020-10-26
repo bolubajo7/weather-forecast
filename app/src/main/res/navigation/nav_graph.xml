@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.summercamp.weather_forecast.ui.MainFragment"
+        android:label="fragmentOne">
+        <action
+            android:id="@+id/action_mainFragment_to_forecastFragment"
+            app:destination="@id/forcastFragment">
+            <argument
+                android:name="cityName"
+                app:argType="string" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/forcastFragment"
+        android:name="com.summercamp.weather_forecast.ui.ForecastFragment"
+        android:label="fragment_forecast">
+        <argument
+            android:name="cityName"
+            app:argType="string" />
+    </fragment>
+</navigation>

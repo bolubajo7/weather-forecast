@@ -3,6 +3,8 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'dagger.hilt.android.plugin'
+apply plugin: "androidx.navigation.safeargs.kotlin"
+
 
 
 android {
@@ -48,6 +50,11 @@ dependencies {
 
     // Android architecture components
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
+
+    //navigation component
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.0'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.3.0'
+
 
 
     testImplementation 'junit:junit:4.12'
